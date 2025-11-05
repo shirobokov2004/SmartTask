@@ -1,0 +1,233 @@
+
+/* ============================================= */
+/*        Windows 11 Fluent Design Style         */
+/* ============================================= */
+
+/* Основные цвета */
+* {
+    font-family: "Segoe UI Variable", "Segoe UI", sans-serif;
+    font-size: 13px;
+    color: #1e1e1e;
+}
+
+/* === Светлая тема === */
+
+QWidget {
+    background-color: #f3f3f3;
+    color: #1e1e1e;
+}
+
+QMainWindow, QDialog {
+    background-color: #f3f3f3;
+}
+
+/* === Заголовки окон === */
+QLabel#title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #0078d7;
+    padding: 8px;
+}
+
+/* === Кнопки === */
+QPushButton {
+    background-color: #0078d7;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    min-height: 32px;
+}
+
+QPushButton:hover {
+    background-color: #106ebe;
+}
+
+QPushButton:pressed {
+    background-color: #005a9e;
+}
+
+QPushButton:disabled {
+    background-color: #c0c0c0;
+    color: #808080;
+}
+
+/* Вторичные кнопки */
+QPushButton[flat="true"] {
+    background-color: transparent;
+    color: #0078d7;
+    border: 1px solid #0078d7;
+}
+
+QPushButton[flat="true"]:hover {
+    background-color: rgba(0, 120, 215, 0.1);
+}
+
+QPushButton[flat="true"]:pressed {
+    background-color: rgba(0, 120, 215, 0.2);
+}
+
+/* === Поля ввода === */
+QLineEdit, QTextEdit, QSpinBox, QDoubleSpinBox {
+    background-color: white;
+    border: 2px solid #d0d0d0;
+    border-radius: 6px;
+    padding: 8px 12px;
+    selection-background-color: #0078d7;
+}
+
+QLineEdit:focus, QTextEdit:focus {
+    border: 2px solid #0078d7;
+    background-color: #ffffff;
+}
+
+QLineEdit::placeholder, QTextEdit::placeholder {
+    color: #808080;
+}
+
+/* === Списки и таблицы === */
+QListWidget, QTreeView, QTableView {
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    alternate-background-color: #f9f9f9;
+}
+
+QListWidget::item, QTreeView::item, QTableView::item {
+    padding: 8px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+QListWidget::item:selected, QTreeView::item:selected, QTableView::item:selected {
+    background-color: #0078d7;
+    color: white;
+}
+
+QListWidget::item:hover, QTreeView::item:hover {
+    background-color: #f0f8ff;
+}
+
+/* === Чекбоксы и радиокнопки === */
+QCheckBox, QRadioButton {
+    spacing: 8px;
+}
+
+QCheckBox::indicator, QRadioButton::indicator {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    border: 2px solid #808080;
+    background-color: white;
+}
+
+QCheckBox::indicator:checked {
+    background-color: #0078d7;
+    border-color: #0078d7;
+    image: url(:/icons/check-white.svg);
+}
+
+QRadioButton::indicator:checked {
+    background-color: white;
+    border-color: #0078d7;
+    image: url(:/icons/radio-checked.svg);
+}
+
+/* === Комбобоксы === */
+QComboBox {
+    background-color: white;
+    border: 2px solid #d0d0d0;
+    border-radius: 6px;
+    padding: 8px 12px;
+    min-height: 32px;
+}
+
+QComboBox:hover {
+    border-color: #0078d7;
+}
+
+QComboBox::drop-down {
+    border: none;
+    width: 30px;
+    border-left: 1px solid #d0d0d0;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+QComboBox::down-arrow {
+    image: url(:/icons/dropdown.svg);
+    width: 12px;
+    height: 12px;
+}
+
+/* === Прогресс-бары === */
+QProgressBar {
+    border: 1px solid #d0d0d0;
+    border-radius: 6px;
+    background-color: #e6e6e6;
+    text-align: center;
+    font-weight: 500;
+}
+
+QProgressBar::chunk {
+    background-color: #0078d7;
+    border-radius: 5px;
+}
+
+/* === Скроллбары === */
+QScrollBar:vertical {
+    border: none;
+    background: #f0f0f0;
+    width: 12px;
+    margin: 0px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:vertical {
+    background: #c0c0c0;
+    min-height: 30px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #a8a8a8;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0px;
+}
+
+/* === Карточки (акрил) === */
+QWidget#card, QWidget#acrylic, Task#task {
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+/* === Разделители === */
+QFrame[frameShape="HLine"] {
+    background-color: #e0e0e0;
+    height: 1px;
+    margin: 8px 0;
+}
+
+/* === Тени (имитация) === */
+QWidget#shadow {
+    background: white;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    /* Тень через градиент */
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #ffffff, stop:1 #f0f0f0);
+}
+
+/* === Подсказки === */
+QToolTip {
+    background-color: #333333;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+}
