@@ -1,5 +1,6 @@
 release/board.o
 release/boardbutton.o
+release/boardhashmap.o
 release/main.o
 release/mainwindow.o
 release/task.o
@@ -7,6 +8,7 @@ release/taskcontainer.o
 release/qrc_resources.o
 release/moc_board.o
 release/moc_boardbutton.o
+release/moc_boardhashmap.o
 release/moc_mainwindow.o
 release/moc_task.o
 release/moc_taskcontainer.o

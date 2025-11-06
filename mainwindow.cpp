@@ -5,17 +5,22 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+    //init varibles
     ui->setupUi(this);
-    activeBoard = new Board(this);
+    activeBoard = QSharedPointer<Board>(new Board(this));
     buttonBoardContainerLayout = new QVBoxLayout();
     ui->boardButtonsContainer->setLayout(buttonBoardContainerLayout);
-    BoardButton *boardBtn = new BoardButton("You first board!", activeBoard);
-    ui->boardButtonsContainer->setContextMenuPolicy(Qt::CustomContextMenu);
-    buttonBoardContainerLayout->addWidget(boardBtn);
-    buttonBoardContainerLayout->addItem(new QSpacerItem(0,0,QSizePolicy::Minimum,QSizePolicy::Expanding));
-    connect(ui->boardButtonsContainer, &QWidget::customContextMenuRequested, this, &MainWindow::showContextMenu);
+    activeButton = new BoardButton("You first board!", activeBoard);
 
-    ui->centralwidget->layout()->addWidget(activeBoard);
+    boardStorage.insert(activeButton->text(), activeBoard);
+    activeButton->setEnabled(false);
+    ui->boardButtonsContainer->setContextMenuPolicy(Qt::CustomContextMenu);
+    buttonBoardContainerLayout->addWidget(activeButton);
+    buttonBoardContainerLayout->addItem(new QSpacerItem(0,0,QSizePolicy::Minimum,QSizePolicy::Expanding));
+    ui->centralwidget->layout()->addWidget(activeBoard.data());
+
+    connect(activeButton, &BoardButton::clicked, this, &MainWindow::openBoard);
+    connect(ui->boardButtonsContainer, &QWidget::customContextMenuRequested, this, &MainWindow::showContextMenu);
 }
 
 MainWindow::~MainWindow()
@@ -25,9 +30,24 @@ MainWindow::~MainWindow()
 
 void MainWindow::createBoard()
 {
-    Board *board = new Board();
-    BoardButton *boardButton = new BoardButton("New Board", board);
+
+    BoardButton *boardButton = new BoardButton("New Board " + QString::number(boardCounter++), QSharedPointer<Board>(new Board()));
+    boardStorage.insert(boardButton->text(), boardButton->takeBoard());
     buttonBoardContainerLayout->insertWidget(buttonBoardContainerLayout->count() - 1, boardButton);
+    connect(boardButton, &BoardButton::clicked, this, &MainWindow::openBoard);
+}
+
+void MainWindow::openBoard()
+{
+    activeBoard.data()->hide();
+    activeButton->setEnabled(true);
+    activeButton = qobject_cast<BoardButton*>(sender());
+    activeButton->setEnabled(false);
+    QString key = activeButton->text();
+    activeBoard = boardStorage.value(key);
+    ui->centralwidget->layout()->addWidget(activeBoard.data());
+    if(activeBoard.data()->isHidden())
+        activeBoard.data()->show();
 }
 
 void MainWindow::showContextMenu(const QPoint &pos)

@@ -11,6 +11,7 @@ CONFIG += c++17
 SOURCES += \
     board.cpp \
     boardbutton.cpp \
+    boardhashmap.cpp \
     main.cpp \
     mainwindow.cpp \
     task.cpp \
@@ -19,6 +20,7 @@ SOURCES += \
 HEADERS += \
     board.h \
     boardbutton.h \
+    boardhashmap.h \
     mainwindow.h \
     task.h \
     taskcontainer.h

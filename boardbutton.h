@@ -10,10 +10,11 @@ class BoardButton : public QPushButton
 {
     Q_OBJECT
 public:
-    BoardButton(QString nameBtn, Board *boardPtr);
+    BoardButton(QString nameBtn, QSharedPointer<Board> boardPtr, QWidget *parent = nullptr);
+    QSharedPointer<Board> takeBoard();
 private:
     QString name = "";
-    Board *board;
+    QSharedPointer<Board> board;
 };
 
 #endif // BOARDBUTTON_H

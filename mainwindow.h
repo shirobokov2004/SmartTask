@@ -7,6 +7,7 @@
 #include <task.h>
 #include <board.h>
 #include <boardbutton.h>
+#include <boardhashmap.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -23,11 +24,17 @@ public:
     ~MainWindow();
 
     void createBoard();
+    void openBoard();
 
 private:
     void showContextMenu(const QPoint &pos);
-    Board *activeBoard;
+
+
+    QSharedPointer<Board> activeBoard;
+    BoardButton *activeButton;
     QVBoxLayout *buttonBoardContainerLayout;
+    BoardHashMap boardStorage;
+    int boardCounter = 1;
     Ui::MainWindow *ui;
 };
 #endif // MAINWINDOW_H

@@ -1,5 +1,6 @@
 debug/board.o
 debug/boardbutton.o
+debug/boardhashmap.o
 debug/main.o
 debug/mainwindow.o
 debug/task.o
@@ -7,6 +8,7 @@ debug/taskcontainer.o
 debug/qrc_resources.o
 debug/moc_board.o
 debug/moc_boardbutton.o
+debug/moc_boardhashmap.o
 debug/moc_mainwindow.o
 debug/moc_task.o
 debug/moc_taskcontainer.o
